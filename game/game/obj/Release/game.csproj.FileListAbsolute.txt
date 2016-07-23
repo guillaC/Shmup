@@ -1,0 +1,5 @@
+C:\Users\Guillaume\Desktop\game\game\bin\Release\game.exe.config
+C:\Users\Guillaume\Desktop\game\game\bin\Release\game.exe
+C:\Users\Guillaume\Desktop\game\game\bin\Release\game.pdb
+C:\Users\Guillaume\Desktop\game\game\obj\Release\game.exe
+C:\Users\Guillaume\Desktop\game\game\obj\Release\game.pdb
