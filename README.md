@@ -1,4 +1,4 @@
 # Shmup
 (not finished) a simple shooter console game
 
-![screen](http://i.imgur.com/AYzopfH.png)
+![screen](http://i.giphy.com/l0HlERgd5HrzcJwlO.gif)
