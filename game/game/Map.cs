@@ -47,44 +47,57 @@ namespace game
             int lineLenght = 0;
             int i = 0;
 
-            System.IO.StreamReader file = new System.IO.StreamReader(@"level.txt");
-            content = file.ReadToEnd();
-            string[] lines = content.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+            using (System.IO.StreamReader file = new System.IO.StreamReader(@"level.txt"))
+            {
 
-            foreach (String line in lines)
-            {
-                lineLenght = line.Length;
-                for (int j = 0; j != line.Length - 1; j++)
+                content = file.ReadToEnd();
+                string[] lines = content.Split(new string[] {"\r\n", "\n"}, StringSplitOptions.None);
+
+                foreach (string line in lines)
                 {
-                    /*<DEBUG>
-                    if (Int32.Parse(line[j].ToString()) == 2)
+                    lineLenght = line.Length;
+                    for (int j = 0; j != line.Length - 1; j++)
                     {
-                        System.Diagnostics.Debug.WriteLine("j=" + j + ": i=" + i + ";");
-                        Thread.Sleep(2550);
+
+#if DEBUG
+                        if (int.Parse(line[j].ToString()) == 2)
+                        {
+                            System.Diagnostics.Debug.WriteLine("j=" + j + ": i=" + i + ";");
+                            Thread.Sleep(2550);
+                        }
+#endif
+
+                        plateauFile[i, j] = int.Parse(line[j].ToString());
                     }
-                    //</DEBUG>*/
-                    plateauFile[i, j] = Int32.Parse(line[j].ToString());
+                    i++;
+
+#if DEBUG
+
+                    System.Diagnostics.Debug.WriteLine(line);
+
+#endif
                 }
-                i++;
-                /*<DEBUG>
-                System.Diagnostics.Debug.WriteLine(line);
-                //</DEBUG>*/
-            }
-            /*<DEBUG>
-            System.Diagnostics.Debug.WriteLine("---------------------------------");
-            Thread.Sleep(5000);
-            System.Diagnostics.Debug.WriteLine("START");
-            for (int k = 0; k != 24; k++)
-            {
-                for (int j = 1; j != 120; j++)
+
+#if DEBUG
+
+                System.Diagnostics.Debug.WriteLine("---------------------------------");
+                Thread.Sleep(5000);
+                System.Diagnostics.Debug.WriteLine("START");
+                for (int k = 0; k != 24; k++)
                 {
-                    System.Diagnostics.Debug.Write(plateauFile[k, j]);
+                    for (int j = 1; j != 120; j++)
+                    {
+                        System.Diagnostics.Debug.Write(plateauFile[k, j]);
+                    }
+                    System.Diagnostics.Debug.WriteLine("");
                 }
-                System.Diagnostics.Debug.WriteLine("");
+                System.Diagnostics.Debug.WriteLine("END");
+
+#endif
+
+                file.Close();
+
             }
-            System.Diagnostics.Debug.WriteLine("END");
-            //</DEBUG>*/
-            file.Close();
         }
 
         public int[,] getMap()
