@@ -10,14 +10,6 @@ namespace game
 
         public Map()
         {
-            for (int i = 0; i != 24; i++)
-            {
-                for (int j = 1; j != 80; j++)
-                {
-                    this.plateau[i, j] = 0; // map vide
-                }
-            }
-
             this.plateau[10, 10] = 1; // emplacement initial du joueur
             readShowMapFile();
 
